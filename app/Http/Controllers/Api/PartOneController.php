@@ -7,24 +7,9 @@ use Illuminate\Http\Request;
 
 class PartOneController extends Controller
 {
-    // public function gitCountWithoutFive($first_number , $last_number){
-    //     // $count = abs($last_number - $first_number) + 1; // Total numbers between start and end
-    //     // $countOfFive = substr_count(join('', range($first_number, $last_number)), '5'); // Numbers with 5 in the ones place
-    //     // $countWithoutFive = $count - $countOfFive; // Numbers without 5
-    //     // return $countWithoutFive;
-    //     $count = 0; // Initialize count to 0
-
-    //     for ($i = $first_number; $i <= $last_number; $i++) {
-    //         if (strpos(strval($i), '5') === false) {
-    //             // If the number does not contain a 5, increment the count
-    //             $count++;
-    //         }
-    //     }
-
-    //     return $count;
-    // }
-
     function gitCountWithoutFive($start, $end) {
+        return response()->json(['status'=>true , 'addresses'=>[] , 'message'=>'sjsjsj ']);
+
         if ($end < $start) {
             return 0; // If the end is smaller than the start, return 0
         }
@@ -85,53 +70,39 @@ class PartOneController extends Controller
     function minimizeSteps() {
         $N = request('N');
         $Q = request('Q');
-        $steps = array(); // Initialize array to store the number of steps for each element
-    
-        // Loop through each element in the input array
-        for ($i = 0; $i < $N; $i++) {
-            $x = $Q[$i]; // Get the value of the current element
-            $count = 0; // Initialize the number of steps for this element to 0
-    
-            // Keep reducing x until it becomes 0
-            while ($x > 0) {
-                $factors = array(); // Initialize array to store the factors of x
-                $sqrt = sqrt($x); // Calculate the square root of x
-    
-                // Find all the factors of x
-                for ($j = 2; $j <= $sqrt; $j++) {
-                    if ($x % $j == 0) {
-                        $factors[] = $j;
-                        if ($j != $x / $j) {
-                            $factors[] = $x / $j;
-                        }
-                    }
-                }
-    
-                if (count($factors) == 0) {
-                    // If x is a prime number, subtract 1 from x
-                    $x--;
-                } else {
-                    // Find the factor that results in the minimum number of steps
-                    $min_steps = PHP_INT_MAX;
-                    foreach ($factors as $factor) {
-                        $steps1 = $x - $factor;
-                        $steps2 = 1 + $count - $this->minimizeSteps(1, array($factor))[0];
-                        $min_steps = min($min_steps, max($steps1, $steps2));
-                    }
-    
-                    // Update x and the number of steps
-                    $x = $min_steps == $x ? $x - 1 : $min_steps;
-                    $count++;
-                }
-            }
-    
-            // Add the number of steps for this element to the result array
-            $steps[] = $count;
-        }
-    
-        return $steps;
-    }
-    
+        
+        $result = [];
 
+        // Iterate through each element in the array Q
+        for ($i = 0; $i < $N; $i++) {
+            $steps = 0;
+            $X     = $Q[$i];
+
+            // Keep reducing X until it becomes 0
+            while ($X > 0) {
+                // Check if we can perform operation 1 on X
+                $a = $b = 0;
+                for ($j = 2; $j <= sqrt($X); $j++) {
+                    if ($X % $j == 0) {
+                        $a = $j;
+                        $b = $X / $j;
+                        break;
+                    }
+                }
+
+                if ($a != 0 && $b != 0) {
+                    $X = max($a, $b);
+                } else {
+                    $X--;
+                }
+
+                $steps++;
+            }
+
+            $result[] = $steps;
+        }
+
+        return $result;
+    }
 
 }
