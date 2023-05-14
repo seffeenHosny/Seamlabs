@@ -15,8 +15,7 @@ class MenuItemController extends Controller
     public function __construct(){
         $this->menuItemService = app(MenuItemService::class);
     }
-
-
+    
     public function index(){
         $menu_items = $this->menuItemService->index();
         return message(true , resource_collection(MenuItemResource::collection($menu_items)) , 'orders' , 200);

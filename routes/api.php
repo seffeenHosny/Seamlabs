@@ -1,8 +1,12 @@
 <?php
 
+use App\Http\Controllers\Api\GetAlphabeticIndexController;
+use App\Http\Controllers\Api\GetCountWithoutFiveController;
 use App\Http\Controllers\Api\MenuItemController;
+use App\Http\Controllers\Api\MinimizeStepsController;
 use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\PartOneController;
+use App\Http\Requests\GetCountWithoutFiveRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,9 +20,9 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-Route::get('git_count_without_five/{first_number}/{last_number}' , [PartOneController::class , 'gitCountWithoutFive']);
-Route::get('getAlphabeticIndex/{input_string}' , [PartOneController::class , 'getAlphabeticIndex']);
-Route::get('minimizeSteps' , [PartOneController::class , 'minimizeSteps']);
+Route::get('git_count_without_five' , [GetCountWithoutFiveController::class , 'gitCountWithoutFive']);
+Route::get('getAlphabeticIndex' , [GetAlphabeticIndexController::class , 'getAlphabeticIndex']);
+Route::get('minimizeSteps' , [MinimizeStepsController::class , 'minimizeSteps']);
 
 
 Route::get('/orders', [OrderController::class , 'index']);
