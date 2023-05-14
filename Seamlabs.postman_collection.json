@@ -1,0 +1,222 @@
+{
+	"info": {
+		"_postman_id": "1a35c979-d437-45ed-a7fe-c9a78e7e4412",
+		"name": "Seamlabs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21096449"
+	},
+	"item": [
+		{
+			"name": "menu items",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{server_url}}/api/menu-items",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"api",
+								"menu-items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Store",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"product 12\",\n    \"price\":20\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server_url}}/api/menu-items?",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"api",
+								"menu-items"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "orders",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{server_url}}/api/orders",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"_comment\": \"order_types :dine-in,delivery,takeaway\",\n    \"order_type\":\"delivery\",\n    \"customer_name\":\"seffeen hosny\",\n    \"customer_phone\":\"01127276165\",\n    \"table_number\":\"10\",\n    \"waiter_name\":\"seffeen\",\n    \"items\":[\n        {\n          \"menu_item_id\": 1,\n          \"quantity\": 2   \n        },\n        {\n          \"menu_item_id\": 5,\n          \"quantity\": 2   \n        },\n        {\n          \"menu_item_id\": 9,\n          \"quantity\": 2   \n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server_url}}/api/orders",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "git_count_without_five",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{server_url}}/api/git_count_without_five?start=40&end=66",
+					"host": [
+						"{{server_url}}"
+					],
+					"path": [
+						"api",
+						"git_count_without_five"
+					],
+					"query": [
+						{
+							"key": "start",
+							"value": "40"
+						},
+						{
+							"key": "end",
+							"value": "66"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAlphabeticIndex",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{server_url}}/api/getAlphabeticIndex?input_string=AAA",
+					"host": [
+						"{{server_url}}"
+					],
+					"path": [
+						"api",
+						"getAlphabeticIndex"
+					],
+					"query": [
+						{
+							"key": "input_string",
+							"value": "AAA"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "minimizeSteps",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"N\":2,\n    \"Q\":[3,4]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server_url}}/api/minimizeSteps",
+					"host": [
+						"{{server_url}}"
+					],
+					"path": [
+						"api",
+						"minimizeSteps"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
